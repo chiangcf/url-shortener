@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "url-shortener-api"
+version = "0.1.0"
+description = "Simple Flask Url shortener"
+authors = ["Christian Chiang"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Flask = "^2.0.3"
+Flask-Cors = "^3.0.10"
+pymongo = "^4.0.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
