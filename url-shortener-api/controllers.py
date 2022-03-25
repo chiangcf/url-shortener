@@ -3,10 +3,13 @@ import random
 import string
 from pymongo import MongoClient
 import certifi
+import validators
 
 # Mongo DB connection, ask me for the password! :)
 # TODO: Store password in credstash
-cluster = MongoClient("mongodb+srv://chris:1234@shortdata.yyg2l.mongodb.net/test?retryWrites=true&w=majority", tlsCAFile=certifi.where())  
+user = "unitedmasters"
+password = "notasafepassword123"
+cluster = MongoClient(f"mongodb+srv://{user}:{password}@shortdata.yyg2l.mongodb.net/test?retryWrites=true&w=majority", tlsCAFile=certifi.where())  
 db = cluster["shortened"]
 collection = db["test-data"]
 
@@ -31,6 +34,13 @@ def id_generator():
 # Shortens the given url by creating a unique id that will get stored to mongoDB
 # returns the new shortened url
 def url_shortener(url):
+  if not url:
+    return "URL cannot be empty", 400
+  
+  valid=validators.url(url)
+  if not valid:
+      return "Invalid URL, did you forget the https:// ? ", 400
+    
   new_id = id_generator()
 
   # A way to stop id coalitions
