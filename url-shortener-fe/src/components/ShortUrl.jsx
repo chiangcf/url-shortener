@@ -1,13 +1,20 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
+import { getUrl, shortenUrl } from "../hooks/controllers";
 
 export const ShortUrl = () => {
   const [url, setUrl] = useState("");
   const [url1, setUrl1] = useState("");
+  const [shortUrl, setShortUrl] = useState("");
+  const [ogUrl, setOgUrl] = useState("");
   return (
     <div>
-      <b>🐼 Super Awesome URL Shortener 🐼</b>
+      <h1>Super Awesome URL Shortener</h1>
+      <br />
+      <br />
+      <b>{shortUrl}</b>
+      <br />
       <Form>
         <Form.Field>
           <input
@@ -20,13 +27,17 @@ export const ShortUrl = () => {
         </Form.Field>
         <Button
           type="submit"
-          onClick={() => {
-            console.log("Looking to shorten this url: " + url);
+          onClick={async () => {
+            const newVal = await shortenUrl(url);
+            setShortUrl(newVal.short_url);
           }}
         >
           Create Shortened Url
         </Button>
       </Form>
+      <br />
+      <b>{ogUrl}</b>
+      <br />
       <Form>
         <Form.Field>
           <input
@@ -39,11 +50,12 @@ export const ShortUrl = () => {
         </Form.Field>
         <Button
           type="submit"
-          onClick={() => {
-            console.log("Looking to decode this url: " + url1);
+          onClick={async () => {
+            const newVal = await getUrl(url1);
+            setOgUrl(newVal.og_url);
           }}
         >
-          Get original value
+          Get Original Value
         </Button>
       </Form>
     </div>

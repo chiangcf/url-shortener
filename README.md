@@ -18,8 +18,8 @@ Make sure you have python 3.9 or higher.
 
 To begin with you will need `poetry` to get started, is the preferred package manager for this project!
 Run the following in your terminal:
-`poetry install`
-`poetry shell`
+`poetry install` to install the dependencies
+`poetry shell` go inside the shell
 
 Initialize Flask
 `python main.py`
@@ -28,4 +28,5 @@ Call our API with your favorite API client and start hitting those endpoints!
 
 ## URL Shortener React Side
 
+`npm install` to install the dependencies
 `npm start` should launch the example app
