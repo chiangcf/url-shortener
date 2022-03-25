@@ -8,7 +8,7 @@ import validators
 # Mongo DB connection, ask me for the password! :)
 # TODO: Store password in credstash
 user = "unitedmasters"
-password = "notasafepassword123"
+password = ""
 cluster = MongoClient(f"mongodb+srv://{user}:{password}@shortdata.yyg2l.mongodb.net/test?retryWrites=true&w=majority", tlsCAFile=certifi.where())  
 db = cluster["shortened"]
 collection = db["test-data"]
