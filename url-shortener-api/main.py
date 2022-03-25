@@ -1,7 +1,9 @@
 from flask import Flask, request
+from flask_cors import CORS
 from controllers import get_url, url_shortener
 
 app = Flask(__name__)
+CORS(app)
 
 # Simple ping to see if App is up
 @app.route("/")

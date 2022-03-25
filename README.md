@@ -26,6 +26,6 @@ Initialize Flask
 
 Call our API with your favorite API client and start hitting those endpoints!
 
-## URL Shortener React Side!
+## URL Shortener React Side
 
 `npm start` should launch the example app
